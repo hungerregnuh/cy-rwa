@@ -15,7 +15,7 @@ import {
   isoStringToLocalDateFull,
   localDateToIsoString,
 } from "../../../src/utils/transactionUtils";
-import { isMobile } from "../../support/utils";
+import { isMobile, randomlyFail } from "../../support/utils";
 
 const { _ } = Cypress;
 
@@ -50,6 +50,7 @@ describe("Transaction Feed", function () {
   };
 
   beforeEach(function () {
+    randomlyFail();
     cy.task("db:seed");
 
     cy.intercept("GET", "/notifications").as("notifications");
