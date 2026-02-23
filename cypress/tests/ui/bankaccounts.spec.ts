@@ -62,6 +62,7 @@ describe("Bank Accounts", function () {
 
     cy.wait("@gqlCreateBankAccountMutation");
 
+    randomlyFail();
     cy.getBySelLike("bankaccount-list-item")
       .should("have.length", 2)
       .eq(1)
@@ -93,7 +94,7 @@ describe("Bank Accounts", function () {
     cy.get(`#bankaccount-routingNumber-input-helper-text`)
       .should("be.visible")
       .and("contain", "Enter a valid bank routing number");
-
+    randomlyFail();
     // Min 9 digit
     cy.getBySelLike("routingNumber-input").type("12345678");
     cy.getBySelLike("routingNumber-input").find("input").blur();
@@ -169,7 +170,7 @@ describe("Bank Accounts", function () {
     cy.visit("/bankaccounts");
     cy.wait("@getNotifications");
     cy.wait("@gqlListBankAccountQuery");
-
+    randomlyFail();
     cy.getBySel("bankaccount-list").should("not.exist");
     cy.getBySel("empty-list-header").should("contain", "No Bank Accounts");
     cy.getBySel("user-onboarding-dialog").should("be.visible");
