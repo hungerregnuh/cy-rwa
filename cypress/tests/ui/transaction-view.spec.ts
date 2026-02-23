@@ -1,4 +1,5 @@
 import { User, Transaction } from "../../../src/models";
+import { randomlyFail } from "../../support/utils";
 
 type NewTransactionCtx = {
   transactionRequest?: Transaction;
