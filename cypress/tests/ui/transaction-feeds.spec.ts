@@ -15,7 +15,7 @@ import {
   isoStringToLocalDateFull,
   localDateToIsoString,
 } from "../../../src/utils/transactionUtils";
-import { isMobile } from "../../support/utils";
+import { isMobile, randomlyFail } from "../../support/utils";
 
 const { _ } = Cypress;
 
