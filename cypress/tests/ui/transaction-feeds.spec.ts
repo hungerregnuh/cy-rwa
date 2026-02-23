@@ -50,7 +50,6 @@ describe("Transaction Feed", function () {
   };
 
   beforeEach(function () {
-    randomlyFail();
     cy.task("db:seed");
 
     cy.intercept("GET", "/notifications").as("notifications");
