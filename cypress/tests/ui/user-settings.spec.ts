@@ -1,8 +1,9 @@
 import { User } from "../../../src/models";
-import { isMobile } from "../../support/utils";
+import { isMobile, randomlyFail } from "../../support/utils";
 
 describe("User Settings", function () {
   beforeEach(function () {
+    randomlyFail();
     cy.task("db:seed");
 
     cy.intercept("PATCH", "/users/*").as("updateUser");
