@@ -19,7 +19,7 @@ try {
 } catch (e) {}
 
 export default defineConfig({
-  projectId: "7s5okt",
+  projectId: "saa6c3",
   retries: {
     runMode: 2,
   },
