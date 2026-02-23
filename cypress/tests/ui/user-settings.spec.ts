@@ -1,5 +1,5 @@
 import { User } from "../../../src/models";
-import { isMobile, randomlyFail } from "../../support/utils";
+import { isMobile } from "../../support/utils";
 
 describe("User Settings", function () {
   beforeEach(function () {
