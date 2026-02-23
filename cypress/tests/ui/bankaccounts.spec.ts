@@ -11,8 +11,6 @@ describe("Bank Accounts", function () {
   const ctx: BankAccountsTestCtx = {};
 
   beforeEach(function () {
-    randomlyFail();
-
     cy.task("db:seed");
 
     cy.intercept("GET", "/notifications").as("getNotifications");

@@ -12,7 +12,6 @@ describe("New Transaction", function () {
   const ctx: NewTransactionTestCtx = {};
 
   beforeEach(function () {
-    randomlyFail();
     cy.task("db:seed");
 
     cy.intercept("GET", "/users*").as("allUsers");
