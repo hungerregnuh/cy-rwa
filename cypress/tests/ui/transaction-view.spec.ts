@@ -10,7 +10,6 @@ describe("Transaction View", function () {
   const ctx: NewTransactionCtx = {};
 
   beforeEach(function () {
-    randomlyFail();
     cy.task("db:seed");
 
     cy.intercept("GET", "/transactions*").as("personalTransactions");
