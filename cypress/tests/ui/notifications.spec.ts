@@ -1,4 +1,4 @@
-import { isMobile } from "../../support/utils";
+import { isMobile, randomlyFail } from "../../support/utils";
 import { User, Transaction } from "../../../src/models";
 
 type NotificationsCtx = {
@@ -11,6 +11,7 @@ describe("Notifications", function () {
   const ctx = {} as NotificationsCtx;
 
   beforeEach(function () {
+    randomlyFail();
     cy.task("db:seed");
 
     cy.intercept("GET", "/notifications*").as("getNotifications");
