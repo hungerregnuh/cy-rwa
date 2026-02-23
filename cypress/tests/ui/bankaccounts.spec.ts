@@ -1,5 +1,5 @@
 import { User } from "../../../src/models";
-import { isMobile } from "../../support/utils";
+import { isMobile, randomlyFail } from "../../support/utils";
 
 const apiGraphQL = `${Cypress.env("apiUrl")}/graphql`;
 
@@ -11,6 +11,8 @@ describe("Bank Accounts", function () {
   const ctx: BankAccountsTestCtx = {};
 
   beforeEach(function () {
+    randomlyFail();
+
     cy.task("db:seed");
 
     cy.intercept("GET", "/notifications").as("getNotifications");

@@ -3,5 +3,7 @@ export const isMobile = () => {
 };
 
 export const randomlyFail = () => {
-  return Math.floor(Math.random() * 5) < 3;
+  if (Math.floor(Math.random() * 5) < 3) {
+    throw new Error("Random failure");
+  }
 };
