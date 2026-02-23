@@ -11,7 +11,6 @@ describe("Notifications", function () {
   const ctx = {} as NotificationsCtx;
 
   beforeEach(function () {
-    randomlyFail();
     cy.task("db:seed");
 
     cy.intercept("GET", "/notifications*").as("getNotifications");
