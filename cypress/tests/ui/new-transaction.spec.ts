@@ -1,6 +1,6 @@
 import Dinero from "dinero.js";
 import { User } from "../../../src/models";
-import { isMobile } from "../../support/utils";
+import { isMobile, randomlyFail } from "../../support/utils";
 
 type NewTransactionTestCtx = {
   allUsers?: User[];
@@ -12,6 +12,7 @@ describe("New Transaction", function () {
   const ctx: NewTransactionTestCtx = {};
 
   beforeEach(function () {
+    randomlyFail();
     cy.task("db:seed");
 
     cy.intercept("GET", "/users*").as("allUsers");
