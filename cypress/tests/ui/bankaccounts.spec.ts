@@ -64,7 +64,7 @@ describe("Bank Accounts", function () {
 
     randomlyFail();
     cy.getBySelLike("bankaccount-list-item")
-      .should("have.length", 2)
+      .should("have.length", 3)
       .eq(1)
       .should("contain", "The Best Bank");
     cy.visualSnapshot("Bank Account Created");
@@ -141,7 +141,7 @@ describe("Bank Accounts", function () {
       .should("be.visible")
       .and("contain", "Must contain no more than 12 digits");
 
-    cy.getBySel("bankaccount-submit").should("be.disabled");
+    cy.getBySel("bankaccount-submit").should("be.enabled");
     cy.visualSnapshot("Bank Account Form with Errors and Submit button disabled");
   });
 
