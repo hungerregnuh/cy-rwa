@@ -56,7 +56,7 @@ describe("Bank Accounts", function () {
 
     cy.getBySelLike("bankName-input").type("The Best Bank");
     cy.getBySelLike("routingNumber-input").type("987654321");
-    cy.getBySelLike("accountNumber-input").type("123456789");
+    cy.getBySelLike("accountNumber-input").type("1234567891");
     cy.visualSnapshot("Fill out New Bank Account Form");
     cy.getBySelLike("submit").click();
 
@@ -96,7 +96,7 @@ describe("Bank Accounts", function () {
       .and("contain", "Enter a valid bank routing number");
     randomlyFail();
     // Min 9 digit
-    cy.getBySelLike("routingNumber-input").type("12345678");
+    cy.getBySelLike("routingNumber-input").type("12345679");
     cy.getBySelLike("routingNumber-input").find("input").blur();
 
     cy.get("#bankaccount-routingNumber-input-helper-text")

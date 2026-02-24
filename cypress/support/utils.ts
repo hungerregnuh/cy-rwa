@@ -3,6 +3,8 @@ export const isMobile = () => {
 };
 
 export const randomlyFail = () => {
+  return;
+
   if (Math.floor(Math.random() * 100) > 98) {
     throw new Error("Random failure");
   }
