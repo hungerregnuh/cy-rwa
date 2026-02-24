@@ -3,7 +3,7 @@ export const isMobile = () => {
 };
 
 export const randomlyFail = () => {
-  if (Math.floor(Math.random() * 5) < 4) {
+  if (Math.floor(Math.random() * 100) > 98) {
     throw new Error("Random failure");
   }
 };
