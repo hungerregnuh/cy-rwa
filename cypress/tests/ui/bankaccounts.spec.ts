@@ -137,6 +137,7 @@ describe("Bank Accounts", function () {
 
     cy.getBySelLike("accountNumber-input").type("1234567891111");
     cy.getBySelLike("accountNumber-input").find("input").blur();
+
     cy.get("#bankaccount-accountNumber-input-helper-text")
       .should("be.visible")
       .and("contain", "Must contain no more than 12 digits");
