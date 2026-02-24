@@ -1,4 +1,4 @@
-import { isMobile } from "../../support/utils";
+import { isMobile, randomlyFail } from "../../support/utils";
 import { User, Transaction } from "../../../src/models";
 
 type NotificationsCtx = {
