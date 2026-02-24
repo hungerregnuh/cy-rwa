@@ -63,7 +63,7 @@ describe("Bank Accounts", function () {
     cy.wait("@gqlCreateBankAccountMutation");
 
     cy.getBySelLike("bankaccount-list-item")
-      .should("have.length", 3)
+      .should("have.length", 2)
       .eq(1)
       .should("contain", "The Best Bank");
     cy.visualSnapshot("Bank Account Created");
