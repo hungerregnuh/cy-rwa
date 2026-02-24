@@ -136,10 +136,10 @@ const TransactionCreateStepTwo: React.FC<TransactionCreateStepTwoProps> = ({
                     fullWidth
                     required
                     autoFocus
-                    id={"transaction-create-amount-input"}
+                    id={"transaction-create-amount-inputt"}
                     type="text"
                     placeholder="Amount"
-                    data-test={"transaction-create-amount-input"}
+                    data-test={"transaction-create-amount-inputt"}
                     error={(touched || value !== initialValue) && Boolean(error)}
                     helperText={touched || value !== initialValue ? error : ""}
                     InputProps={{

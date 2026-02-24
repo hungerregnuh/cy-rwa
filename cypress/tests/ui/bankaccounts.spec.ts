@@ -56,14 +56,15 @@ describe("Bank Accounts", function () {
 
     cy.getBySelLike("bankName-input").type("The Best Bank");
     cy.getBySelLike("routingNumber-input").type("987654321");
-    cy.getBySelLike("accountNumber-input").type("123456789");
+    cy.getBySelLike("accountNumber-input").type("1234567891");
     cy.visualSnapshot("Fill out New Bank Account Form");
     cy.getBySelLike("submit").click();
 
     cy.wait("@gqlCreateBankAccountMutation");
 
+    randomlyFail();
     cy.getBySelLike("bankaccount-list-item")
-      .should("have.length", 2)
+      .should("have.length", 3)
       .eq(1)
       .should("contain", "The Best Bank");
     cy.visualSnapshot("Bank Account Created");
@@ -93,9 +94,9 @@ describe("Bank Accounts", function () {
     cy.get(`#bankaccount-routingNumber-input-helper-text`)
       .should("be.visible")
       .and("contain", "Enter a valid bank routing number");
-
+    randomlyFail();
     // Min 9 digit
-    cy.getBySelLike("routingNumber-input").type("12345678");
+    cy.getBySelLike("routingNumber-input").type("12345679");
     cy.getBySelLike("routingNumber-input").find("input").blur();
 
     cy.get("#bankaccount-routingNumber-input-helper-text")
@@ -140,7 +141,7 @@ describe("Bank Accounts", function () {
       .should("be.visible")
       .and("contain", "Must contain no more than 12 digits");
 
-    cy.getBySel("bankaccount-submit").should("be.disabled");
+    cy.getBySel("bankaccount-submit").should("be.enabled");
     cy.visualSnapshot("Bank Account Form with Errors and Submit button disabled");
   });
 
@@ -169,7 +170,7 @@ describe("Bank Accounts", function () {
     cy.visit("/bankaccounts");
     cy.wait("@getNotifications");
     cy.wait("@gqlListBankAccountQuery");
-
+    randomlyFail();
     cy.getBySel("bankaccount-list").should("not.exist");
     cy.getBySel("empty-list-header").should("contain", "No Bank Accounts");
     cy.getBySel("user-onboarding-dialog").should("be.visible");

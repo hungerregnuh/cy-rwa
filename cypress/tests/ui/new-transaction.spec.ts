@@ -24,7 +24,7 @@ describe("New Transaction", function () {
     cy.intercept("GET", "/transactions/public").as("publicTransactions");
     cy.intercept("GET", "/transactions").as("personalTransactions");
     cy.intercept("PATCH", "/transactions/*").as("updateTransaction");
-
+    randomlyFail();
     cy.database("filter", "users").then((users: User[]) => {
       ctx.allUsers = users;
       ctx.user = users[0];
@@ -79,7 +79,7 @@ describe("New Transaction", function () {
     cy.getBySelLike("personal-tab").click();
     cy.getBySelLike("personal-tab").should("have.class", "Mui-selected");
     cy.wait("@personalTransactions");
-
+    randomlyFail();
     cy.getBySel("transaction-list").first().should("contain", payment.description);
 
     cy.database("find", "users", { id: ctx.contact!.id })
@@ -110,7 +110,7 @@ describe("New Transaction", function () {
       .should("be.visible")
       .and("have.text", "Transaction Submitted!");
     cy.visualSnapshot("Transaction Request Submitted Notification");
-
+    randomlyFail();
     cy.getBySelLike("return-to-transactions").click();
     cy.getBySelLike("personal-tab").click();
     cy.getBySelLike("personal-tab").should("have.class", "Mui-selected");
@@ -138,7 +138,7 @@ describe("New Transaction", function () {
     cy.get("#transaction-create-description-input-helper-text")
       .should("be.visible")
       .and("contain", "Please enter a note");
-
+    randomlyFail();
     cy.getBySelLike("submit-request").should("be.disabled");
     cy.getBySelLike("submit-payment").should("be.disabled");
     cy.visualSnapshot("New Transaction Errors with Submit Payment/Request Buttons Disabled");
@@ -192,7 +192,7 @@ describe("New Transaction", function () {
     if (isMobile()) {
       cy.getBySel("sidenav-toggle").click();
     }
-
+    randomlyFail();
     cy.getBySelLike("user-balance").should("contain", updatedAccountBalance);
     cy.visualSnapshot("Verify Updated Sender Account Balance");
   });
@@ -233,7 +233,7 @@ describe("New Transaction", function () {
     cy.getBySelLike("receiver-avatar").should("be.visible");
     cy.getBySelLike("transaction-description").should("be.visible");
     cy.visualSnapshot("Accept Transaction Request");
-
+    randomlyFail();
     cy.switchUserByXstate(ctx.user!.username);
 
     const updatedAccountBalance = Dinero({
@@ -283,7 +283,7 @@ describe("New Transaction", function () {
           });
 
         cy.visualSnapshot(`User List for Search: ${attr} = ${targetUser[attr]}`);
-
+        randomlyFail();
         cy.focused().clear();
         cy.getBySel("users-list").should("be.empty");
         cy.visualSnapshot("User List Clear Search");
